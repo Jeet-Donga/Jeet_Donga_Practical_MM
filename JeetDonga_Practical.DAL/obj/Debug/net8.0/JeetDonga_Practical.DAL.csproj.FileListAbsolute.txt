@@ -7,6 +7,7 @@ F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net
 F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\JeetDonga_Practical.DAL.AssemblyInfoInputs.cache
 F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\JeetDonga_Practical.DAL.AssemblyInfo.cs
 F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\JeetDonga_Practical.DAL.csproj.CoreCompileInputs.cache
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\JeetDonga_Practical.DAL.sourcelink.json
 F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\JeetDonga_Practical.DAL.dll
 F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\refint\JeetDonga_Practical.DAL.dll
 F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.DAL\obj\Debug\net8.0\JeetDonga_Practical.DAL.pdb
