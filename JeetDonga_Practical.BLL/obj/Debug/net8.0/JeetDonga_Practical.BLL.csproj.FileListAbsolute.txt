@@ -1,0 +1,15 @@
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\bin\Debug\net8.0\JeetDonga_Practical.BLL.deps.json
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\bin\Debug\net8.0\JeetDonga_Practical.BLL.dll
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\bin\Debug\net8.0\JeetDonga_Practical.BLL.pdb
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\bin\Debug\net8.0\JeetDonga_Practical.DAL.dll
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\bin\Debug\net8.0\JeetDonga_Practical.DAL.pdb
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.csproj.AssemblyReference.cache
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.GeneratedMSBuildEditorConfig.editorconfig
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.AssemblyInfoInputs.cache
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.AssemblyInfo.cs
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.csproj.CoreCompileInputs.cache
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDong.B0B41758.Up2Date
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.dll
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\refint\JeetDonga_Practical.BLL.dll
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\JeetDonga_Practical.BLL.pdb
+F:\JEET\Jeet_Interview\JeetDonga_Practical\JeetDonga_Practical.BLL\obj\Debug\net8.0\ref\JeetDonga_Practical.BLL.dll

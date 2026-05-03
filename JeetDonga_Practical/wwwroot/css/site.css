@@ -1,0 +1,166 @@
+/* GLOBAL */
+body {
+    font-family: Arial;
+    background: #f4f6f9;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+th {
+    background: #007bff;
+    color: #ffffff;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* BUTTON COMMON */
+button {
+    padding: 6px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+    /* ADD BUTTON */
+    button:first-of-type {
+        background: #007bff;
+        color: #ffffff;
+    }
+
+/* EDIT BUTTON */
+.edit-btn {
+    background: orange;
+    color: white;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background: red;
+    color: white;
+}
+
+/* MODAL BACKGROUND */
+#modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+    /* MODAL FORM BOX */
+    #modal form {
+        background: #ffffff;
+        width: 360px;
+        margin: 8% auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    /* INPUT FIELDS */
+    #modal input,
+    #modal select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+/* FOOTER */
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* CHECKBOX GROUP */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+    /* 🔥 FINAL PERFECT CHECKBOX FIX */
+    .checkbox-container input {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: #007bff;
+        position: relative;
+        top: 6px; /* FINAL alignment fix */
+        transform: scale(1.3);
+    }
+
+/* BUTTON GROUP */
+.form-footer div {
+    display: flex;
+    gap: 8px;
+}
+
+/* SUBMIT BUTTON */
+#submitBtn {
+    padding: 7px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+}
+
+    /* DISABLED */
+    #submitBtn:disabled {
+        background: gray;
+        cursor: not-allowed;
+    }
+
+/* DELETE MODAL BACKGROUND */
+.delete-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+/* DELETE BOX */
+.delete-box {
+    background: white;
+    width: 300px;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* BUTTONS */
+.delete-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-confirm {
+    background: red;
+    color: white;
+    padding: 6px 12px;
+}
+
+.delete-cancel {
+    background: gray;
+    color: white;
+    padding: 6px 12px;
+}

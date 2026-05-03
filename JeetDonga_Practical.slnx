@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="JeetDonga_Practical.BLL/JeetDonga_Practical.BLL.csproj" Id="7673ded6-e406-4060-9f18-c505ca4371cb" />
+  <Project Path="JeetDonga_Practical.DAL/JeetDonga_Practical.DAL.csproj" Id="e17b600a-a541-46da-9660-c971e09c000e" />
+  <Project Path="JeetDonga_Practical/JeetDonga_Practical.csproj" />
+</Solution>

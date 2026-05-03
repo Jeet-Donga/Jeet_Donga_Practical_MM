@@ -1,0 +1,253 @@
+﻿@model List<JeetDonga_Practical.DAL.Entities.UserModel>
+
+<h2>User Registration</h2>
+
+<button onclick="openModal()">Add User</button>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>
+                <button onclick="editUser(@item.Id,'@item.Name','@item.Email','@item.Phone',@item.StateId,@item.CityId)">Edit</button>
+                <button onclick="deleteUser(@item.Id)">Delete</button>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- MAIN MODAL -->
+<div id="modal" style="display:none; padding:20px; border:1px solid black; background:#eee;">
+    <form method="post" action="/User/Save">
+
+        <input type="hidden" id="Id" name="Id" />
+
+        <input id="Name" name="Name" placeholder="Name" required />
+
+        <input id="Email" name="Email" placeholder="Email" type="email" required />
+        <span id="emailError" style="color:red;"></span>
+
+        <input id="Phone" name="Phone" placeholder="Phone"
+               maxlength="10"
+               onkeypress="return isNumber(event)"
+               required />
+        <span id="phoneError" style="color:red;"></span>
+
+        <select id="StateId" name="StateId" onchange="loadCity()" required>
+            <option value="">Select State</option>
+        </select>
+
+        <select id="CityId" name="CityId" required>
+            <option value="">Select City</option>
+        </select>
+
+        <div class="form-footer">
+            <label class="checkbox-container">
+                <input type="checkbox" id="agree" onclick="toggleBtn()" />
+                <span>Agree</span>
+            </label>
+
+            <div>
+                <button id="submitBtn" disabled type="submit">Submit</button>
+                <button type="button" onclick="resetForm()">Reset</button>
+                <button type="button" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- 🔥 DELETE MODAL -->
+<div id="deleteModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6);">
+    <div style="background:white; width:300px; margin:15% auto; padding:20px; border-radius:10px; text-align:center;">
+        <h3>Are you sure?</h3>
+        <p>Do you want to delete this record?</p>
+
+        <div style="margin-top:15px; display:flex; justify-content:space-around;">
+            <button style="background:red;color:white;" onclick="confirmDelete()">Yes Delete</button>
+            <button style="background:gray;color:white;" onclick="closeDeleteModal()">No</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    // GLOBAL
+    let originalData = {};
+    let isEditMode = false;
+    let deleteId = 0;
+
+    // OPEN MODAL
+    function openModal(){
+    document.getElementById("modal").style.display="block";
+    isEditMode = false;
+    resetForm();
+    loadStates();
+    }
+
+    // CLOSE
+    function closeModal(){
+    document.getElementById("modal").style.display="none";
+    }
+
+    // ENABLE SUBMIT
+    function toggleBtn(){
+    document.getElementById("submitBtn").disabled =
+    !document.getElementById("agree").checked;
+    }
+
+    // LOAD STATES
+    function loadStates(selectedStateId = null, selectedCityId = null) {
+
+    $.get('/User/GetStates', function (data) {
+
+    let state = $("#StateId");
+    state.empty();
+    state.append("<option value=''>Select State</option>");
+
+    $.each(data, function (i, v) {
+    state.append(`<option value="${v.id}">${v.name}</option>`);
+    });
+
+    if (selectedStateId) {
+    state.val(selectedStateId);
+    loadCity(selectedCityId);
+    }
+    });
+    }
+
+    // LOAD CITY
+    function loadCity(selectedCityId = null){
+
+    let stateId=$("#StateId").val();
+
+    $.get('/User/GetCities?stateId='+stateId,function(data){
+
+    let city=$("#CityId");
+    city.empty().append("<option value=''>Select City</option>");
+
+    $.each(data,function(i,v){
+    city.append(`<option value="${v.id}">${v.name}</option>`);
+    });
+
+    if(selectedCityId){
+    city.val(selectedCityId);
+    }
+    });
+    }
+
+    // EDIT
+    function editUser(id,name,email,phone,stateId,cityId){
+
+    openModal();
+    isEditMode=true;
+
+    originalData={id,name,email,phone,stateId,cityId};
+
+    $("#Id").val(id);
+    $("#Name").val(name);
+    $("#Email").val(email);
+    $("#Phone").val(phone);
+
+    loadStates(stateId, cityId);
+
+    $("#agree").prop("checked",true);
+    $("#submitBtn").prop("disabled",false);
+    }
+
+    // 🔥 DELETE (UPDATED)
+    function deleteUser(id){
+    deleteId = id;
+    document.getElementById("deleteModal").style.display = "block";
+    }
+
+    function closeDeleteModal(){
+    document.getElementById("deleteModal").style.display = "none";
+    }
+
+    function confirmDelete(){
+    $.post('/User/Delete?id=' + deleteId, function(){
+    location.reload();
+    });
+    }
+
+    // RESET
+    function resetForm(){
+
+    if(isEditMode){
+    $("#Id").val(originalData.id);
+    $("#Name").val(originalData.name);
+    $("#Email").val(originalData.email);
+    $("#Phone").val(originalData.phone);
+
+    loadStates(originalData.stateId, originalData.cityId);
+
+    $("#agree").prop("checked",true);
+    $("#submitBtn").prop("disabled",false);
+
+    }else{
+    $("#Id").val("");
+    $("#Name").val("");
+    $("#Email").val("");
+    $("#Phone").val("");
+    $("#StateId").empty().append("<option value=''>Select State</option>");
+    $("#CityId").empty().append("<option value=''>Select City</option>");
+
+    $("#agree").prop("checked",false);
+    $("#submitBtn").prop("disabled",true);
+    }
+    }
+
+    document.querySelector("form").addEventListener("submit", function(e){
+
+    var email=$("#Email").val();
+    var phone=$("#Phone").val();
+    var emailError=$("#emailError");
+    var phoneError=$("#phoneError");
+
+    var pattern=/^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+
+    // EMAIL
+    if(!pattern.test(email)){
+    emailError.text("Enter valid email");
+    e.preventDefault();
+    return;
+    } else {
+    emailError.text("");
+    }
+
+    // 🔥 PHONE FINAL VALIDATION
+    if(phone.length !== 10){
+    phoneError.text("Phone must be exactly 10 digits");
+    e.preventDefault();
+    return;
+    } else {
+    phoneError.text("");
+    }
+
+    });
+
+    document.getElementById("Phone").addEventListener("input", function () {
+
+    // only numbers allow
+    this.value = this.value.replace(/[^0-9]/g, '');
+
+    // max 10 digits
+    if (this.value.length > 10) {
+    this.value = this.value.slice(0, 10);
+    }
+    });
+
+</script>
