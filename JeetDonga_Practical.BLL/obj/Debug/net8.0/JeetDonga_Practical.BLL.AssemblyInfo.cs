@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JeetDonga_Practical.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4079f9317f43d338f72ba542446e10719e6f46fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b63bbad0242f0d496d91a763ac8175baaeec66a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("JeetDonga_Practical.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JeetDonga_Practical.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
