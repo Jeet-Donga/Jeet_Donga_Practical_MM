@@ -1,0 +1,172 @@
+-- ==============================
+-- DATABASE (OPTIONAL)
+-- ==============================
+CREATE DATABASE JeetDongaDB;
+GO
+
+USE JeetDongaDB;
+GO
+
+
+-- ==============================
+-- STATE TABLE
+-- ==============================
+CREATE TABLE State (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100) NOT NULL
+);
+GO
+
+
+-- ==============================
+-- CITY TABLE
+-- ==============================
+CREATE TABLE City (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100) NOT NULL,
+    StateId INT NOT NULL,
+    FOREIGN KEY (StateId) REFERENCES State(Id)
+);
+GO
+
+
+-- ==============================
+-- USER TABLE
+-- ==============================
+CREATE TABLE tblUserRegistration (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone VARCHAR(10) NOT NULL,
+    StateId INT NOT NULL,
+    CityId INT NOT NULL,
+    FOREIGN KEY (StateId) REFERENCES State(Id),
+    FOREIGN KEY (CityId) REFERENCES City(Id)
+);
+GO
+
+
+-- ==============================
+-- INSERT DEFAULT DATA
+-- ==============================
+INSERT INTO State (Name) VALUES 
+('Gujarat'),
+('Maharashtra');
+
+INSERT INTO City (Name, StateId) VALUES
+('Surat',1),
+('Bardoli',1),
+('Ahmedabad',1),
+('Mumbai',2),
+('Pune',2);
+GO
+
+
+-- ==============================
+-- INSERT USER
+-- ==============================
+CREATE PROCEDURE sp_InsertUser
+    @Name VARCHAR(100),
+    @Email VARCHAR(100),
+    @Phone VARCHAR(10),
+    @StateId INT,
+    @CityId INT
+AS
+BEGIN
+    INSERT INTO tblUserRegistration(Name, Email, Phone, StateId, CityId)
+    VALUES (@Name, @Email, @Phone, @StateId, @CityId)
+END
+GO
+
+
+-- ==============================
+-- GET ALL USERS
+-- ==============================
+CREATE PROCEDURE sp_GetUsers
+AS
+BEGIN
+    SELECT 
+        u.Id,
+        u.Name,
+        u.Email,
+        u.Phone,
+        u.StateId,
+        u.CityId,
+        s.Name AS StateName,
+        c.Name AS CityName
+    FROM tblUserRegistration u
+    INNER JOIN State s ON u.StateId = s.Id
+    INNER JOIN City c ON u.CityId = c.Id
+END
+GO
+
+
+-- ==============================
+-- GET USER BY ID
+-- ==============================
+CREATE PROCEDURE sp_GetUserById
+    @Id INT
+AS
+BEGIN
+    SELECT * FROM tblUserRegistration WHERE Id = @Id
+END
+GO
+
+
+-- ==============================
+-- UPDATE USER
+-- ==============================
+CREATE PROCEDURE sp_UpdateUser
+    @Id INT,
+    @Name VARCHAR(100),
+    @Email VARCHAR(100),
+    @Phone VARCHAR(10),
+    @StateId INT,
+    @CityId INT
+AS
+BEGIN
+    UPDATE tblUserRegistration
+    SET 
+        Name = @Name,
+        Email = @Email,
+        Phone = @Phone,
+        StateId = @StateId,
+        CityId = @CityId
+    WHERE Id = @Id
+END
+GO
+
+
+-- ==============================
+-- DELETE USER
+-- ==============================
+CREATE PROCEDURE sp_DeleteUser
+    @Id INT
+AS
+BEGIN
+    DELETE FROM tblUserRegistration WHERE Id = @Id
+END
+GO
+
+
+-- ==============================
+-- GET STATES
+-- ==============================
+CREATE PROCEDURE sp_GetStates
+AS
+BEGIN
+    SELECT * FROM State
+END
+GO
+
+
+-- ==============================
+-- GET CITIES BY STATE
+-- ==============================
+CREATE PROCEDURE sp_GetCitiesByState
+    @StateId INT
+AS
+BEGIN
+    SELECT * FROM City WHERE StateId = @StateId
+END
+GO
